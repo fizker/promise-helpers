@@ -83,6 +83,15 @@ A variant of `Promise.nfapply()`, where the arguments are given one-by-one.
 Think `function#call()` and `function#apply()`.
 
 
+### Promise.denodeify(fn)
+
+Returns a `Promise`-wrapped version of `fn`. When called, it will transfer the
+arguments + a callback to the original function, and resolve the promise when
+the original is done.
+
+It is a convenience method around `Promise.nfapply.bind(null, fn)`.
+
+
 [Q]: https://github.com/kriskowal/q
 [es6-shim]: https://github.com/paulmillr/es6-shim
 [es6-promise]: https://github.com/jakearchibald/es6-promise
