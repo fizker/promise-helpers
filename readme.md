@@ -61,6 +61,23 @@ is equal to
     }
 
 
+### Promise.nfapply(fn, args)
+
+A convenience method for wrapping a function expecting a Node-style callback in
+a promise.
+
+It unfolds the `args` array as parameters for the `fn` param, and appends a
+callback on the end.
+
+If the first parameter is set, the promise is rejected with the error.
+
+If the first parameter is not set, the promise is resolved with an array
+containing the other parameters.
+
+If no arguments are supplied on a success-case, the promise will resolve to
+an empty array.
+
+
 [Q]: https://github.com/kriskowal/q
 [es6-shim]: https://github.com/paulmillr/es6-shim
 [es6-promise]: https://github.com/jakearchibald/es6-promise
