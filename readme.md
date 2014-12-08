@@ -83,13 +83,19 @@ A variant of `Promise.nfapply()`, where the arguments are given one-by-one.
 Think `function#call()` and `function#apply()`.
 
 
-### Promise.denodeify(fn)
+### Promise.denodeify(fn, options)
 
 Returns a `Promise`-wrapped version of `fn`. When called, it will transfer the
 arguments + a callback to the original function, and resolve the promise when
 the original is done.
 
 It is a convenience method around `Promise.nfapply.bind(null, fn)`.
+
+It can take an options, `singleResult`, which, when `true`, will always return
+the first result of the result-array that `nfapply` returns.
+
+This means that for no results, the first param will be undefined, and for
+multiple results, only the first is passed along.
 
 
 [Q]: https://github.com/kriskowal/q

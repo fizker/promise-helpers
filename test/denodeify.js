@@ -11,6 +11,54 @@ describe('Calling `denodeify()`', function() {
 		expect(this.newFn).to.be.a('function')
 	})
 
+	describe('with option `singleResult:true`', function() {
+		beforeEach(function() {
+			this.newFn = Promise.denodeify(this.fn, { singleResult: true })
+			this.result = this.newFn(1, {}, 'abc')
+		})
+
+		describe('and the callback is called with an error', function() {
+			beforeEach(function() {
+				this.error = new Error
+				this.fn.callsArg({ arguments: [this.error], now: true })
+			})
+			it('should reject the promise', function() {
+				return this.result
+					.should.eventually.be.rejectedWith(this.error)
+			})
+		})
+
+		describe('and the callback is called with no arguments', function() {
+			beforeEach(function() {
+				this.fn.callsArg({ now: true })
+			})
+			it('should resolve the promise with no arguments', function() {
+				return this.result
+					.should.eventually.deep.equal(undefined)
+			})
+		})
+
+		describe('and the callback is called with a single non-error argument', function() {
+			beforeEach(function() {
+				this.fn.callsArg({ now: true, arguments: [null, 1] })
+			})
+			it('should resolve the promise with that argument', function() {
+				return this.result
+					.should.eventually.deep.equal(1)
+			})
+		})
+
+		describe('and the callback is called with multiple non-error arguments', function() {
+			beforeEach(function() {
+				this.fn.callsArg({ now: true, arguments: [null, 1,2,3] })
+			})
+			it('should resolve the promise with the first argument', function() {
+				return this.result
+					.should.eventually.deep.equal(1)
+			})
+		})
+	})
+
 	describe('and the new function is called', function() {
 		beforeEach(function() {
 			this.result = this.newFn(1, {}, 'abc')
