@@ -77,6 +77,11 @@ containing the other parameters.
 If no arguments are supplied on a success-case, the promise will resolve to
 an empty array.
 
+### Promise.nfcall(fn[, arg1, ...])
+
+A variant of `Promise.nfapply()`, where the arguments are given one-by-one.
+Think `function#call()` and `function#apply()`.
+
 
 [Q]: https://github.com/kriskowal/q
 [es6-shim]: https://github.com/paulmillr/es6-shim

@@ -23,3 +23,8 @@ Promise.nfapply = function nfapply(fn, args) {
 		}))
 	})
 }
+
+Promise.nfcall = function nfcall(fn/*, ...args*/) {
+	var args = Array.prototype.slice.call(arguments, 1)
+	return Promise.nfapply(fn, args)
+}
