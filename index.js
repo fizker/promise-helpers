@@ -10,7 +10,7 @@ Promise.prototype.nodeify = function nodeify(fn) {
 
 Promise.prototype.spread = function spread(ok, fail) {
 	var _this = this
-	var resolver = function(arr) { ok.apply(_this, arr) }
+	var resolver = function(arr) { return ok.apply(_this, arr) }
 	return this.then(ok ? resolver : undefined, fail)
 }
 

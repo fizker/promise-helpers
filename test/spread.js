@@ -1,7 +1,7 @@
 describe('Calling `spread()`', function() {
 	beforeEach(function() {
-		this.resolvee = fzkes.fake('resolved')
-		this.rejectee = fzkes.fake('rejected')
+		this.resolvee = fzkes.fake('resolved').returns('got resolved')
+		this.rejectee = fzkes.fake('rejected').returns('got rejected')
 	})
 
 	it('should return a promise', function() {
@@ -47,6 +47,9 @@ describe('Calling `spread()`', function() {
 			this.rejectee
 				.should.not.have.been.called
 		})
+		it('should return the answer', function() {
+			return this.promise.should.eventually.equal('got resolved')
+		})
 	})
 
 	describe('on a promise not containing an array', function() {
@@ -83,6 +86,9 @@ describe('Calling `spread()`', function() {
 		it('should not call the success handler', function() {
 			this.resolvee
 				.should.not.have.been.called
+		})
+		it('should return the answer', function() {
+			return this.promise.should.eventually.equal('got rejected')
 		})
 	})
 })
