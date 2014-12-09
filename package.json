@@ -1,6 +1,6 @@
 {
   "name": "promise-helpers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Some helpers for using promises with node",
   "homepage": "https://github.com/fizker/promise-helpers",
   "main": "index.js",
