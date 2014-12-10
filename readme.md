@@ -38,6 +38,27 @@ is equal to
         })
 
 
+### Promise#all()
+
+A chainable convenience for `Promise.all()`.
+
+    somePromise
+        .then(function(values) {
+            return values.map(transformThatReturnsPromises)
+        })
+        .all()
+        .then(handleResults)
+
+is equivalent to
+
+    somePromise
+        .then(function(values) {
+            return values.map(transformThatReturnsPromises)
+        })
+        .then(function(results) { return Promise.all(results) })
+        .then(handleResults)
+
+
 ### Promise#nodeify(fn)
 
 A helper to bridge a promise-based API to node-style functions.
@@ -76,6 +97,7 @@ containing the other parameters.
 
 If no arguments are supplied on a success-case, the promise will resolve to
 an empty array.
+
 
 ### Promise.nfcall(fn[, arg1, ...])
 

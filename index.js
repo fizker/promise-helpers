@@ -14,6 +14,12 @@ Promise.prototype.spread = function spread(ok, fail) {
 	return this.then(ok ? resolver : undefined, fail)
 }
 
+Promise.prototype.all = function all() {
+	return this.then(function(arr) {
+		return Promise.all(arr)
+	})
+}
+
 Promise.nfapply = function nfapply(fn, args) {
 	return new Promise(function(resolve, reject) {
 		fn.apply(null, args.concat(function(err/*, ...args*/) {
