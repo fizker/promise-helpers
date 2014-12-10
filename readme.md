@@ -90,6 +90,14 @@ is equal to
     }
 
 
+### Promise#done()
+
+Caps a promise chain. No promise is returned from this call.
+
+If the promise would be rejected, `done()` will rethrow the error in global
+scope.
+
+
 ### Promise.nfapply(fn, args)
 
 A convenience method for wrapping a function expecting a Node-style callback in

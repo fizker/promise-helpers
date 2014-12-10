@@ -23,6 +23,12 @@ Promise.prototype.all = function all() {
 	})
 }
 
+Promise.prototype.done = function done() {
+	this.catch(function(e) {
+		setTimeout(function() { throw e }, 0)
+	})
+}
+
 Promise.nfapply = function nfapply(fn, args) {
 	return new Promise(function(resolve, reject) {
 		fn.apply(null, args.concat(function(err/*, ...args*/) {
