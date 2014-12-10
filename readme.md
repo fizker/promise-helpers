@@ -17,6 +17,18 @@ To add a shim for a valid spec, use npm modules like [es6-shim][es6-shim] or
 Extensions
 ----------
 
+### Promise#finally(fn)
+
+`fn` is called at the specified point, regardless of the resolved or rejected
+state of the promise.
+
+The promise returned will have the same resolved or rejected state as before `fn`
+was called.
+
+See [https://github.com/matthew-andrews/Promise.prototype.finally](https://github.com/matthew-andrews/Promise.prototype.finally)
+for details.
+
+
 ### Promise#spread(okHandler[, errorHandler])
 
 An alternative to `then()`. If the promise resolves to an array, the `okHandler`

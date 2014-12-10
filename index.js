@@ -1,3 +1,5 @@
+require('promise.prototype.finally')
+
 Promise.prototype.nodeify = function nodeify(fn) {
 	if(!fn) return this
 

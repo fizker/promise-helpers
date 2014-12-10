@@ -7,6 +7,9 @@
   "scripts": {
     "test": "mocha"
   },
+  "dependencies": {
+    "promise.prototype.finally": "^1.0.0"
+  },
   "devDependencies": {
     "chai": "^1.10.0",
     "chai-as-promised": "^4.1.1",
