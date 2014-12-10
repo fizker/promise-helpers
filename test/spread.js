@@ -35,9 +35,14 @@ describe('Calling `spread()`', function() {
 
 	describe('on a promise containing an array', function() {
 		beforeEach(function() {
+			fzkes.fake(Promise, 'all').callsOriginal()
 			this.promise = Promise.resolve([1,2,3])
 				.spread(this.resolvee, this.rejectee)
 			return this.promise
+		})
+		it('should pass the array through `Promise.all()`', function() {
+			Promise.all
+				.should.have.been.calledWith([1,2,3])
 		})
 		it('should unfold the array', function() {
 			this.resolvee

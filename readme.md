@@ -37,6 +37,14 @@ is equal to
             ...
         })
 
+It will also pass the array through `Promise.all()`, so the above example is
+also equal to
+
+    Promise.resolve([ firstPromise, secondPromise ])
+        .spread(function(firstResult, secondResult) {
+            ...
+        })
+
 
 ### Promise#all()
 
